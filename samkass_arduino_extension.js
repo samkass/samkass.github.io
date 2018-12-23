@@ -117,7 +117,7 @@
     // TEMPORARY WORKAROUND
     // Since _deviceRemoved is not used with Serial devices
     // ping device regularly to check connection
-    pinger = setInterval(function() {
+    pinger = setTimeout(setInterval(function() {
       if (pinged) {
         console.log('Ping check '+pingCheckCount+'.');
         if (++pingCheckCount > 6) {
@@ -138,7 +138,7 @@
         pinged = true;
         console.log('Pinged firmware.');
       }
-    }, 5000);
+    }, 5000), 10000);
   }
 
   function hasCapability(pin, mode) {
