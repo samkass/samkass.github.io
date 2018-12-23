@@ -250,9 +250,12 @@
     for (var i=0; i < inputData.length; i++) {
       
       if (parsingSysex) {
-//        console.log('Additional sysex data '+inputData[i].toString(16));
+
         if (sysexBytesRead == 0) {
           console.log('Sysex is command '+inputData[i].toString(16));
+        }
+        else {
+          console.log('Additional sysex data '+inputData[i].toString(16));
         }
         if (inputData[i] == END_SYSEX) {
           parsingSysex = false;
