@@ -117,28 +117,30 @@
     // TEMPORARY WORKAROUND
     // Since _deviceRemoved is not used with Serial devices
     // ping device regularly to check connection
-    pinger = setTimeout(setInterval(function() {
-      if (pinged) {
-        console.log('Ping check '+pingCheckCount+'.');
-        if (++pingCheckCount > 6) {
-          clearInterval(pinger);
-          pinger = null;
-          connected = false;
-          if (device) device.close();
-          device = null;
-          return;
-        }
-      } else {
-        if (!device) {
-          clearInterval(pinger);
-          pinger = null;
-          return;
-        }
-        queryFirmware();
-        pinged = true;
-        console.log('Pinged firmware.');
-      }
-    }, 5000), 10000);
+    setTimeout(function() {
+		pinger = setInterval(function() {
+		  if (pinged) {
+			console.log('Ping check '+pingCheckCount+'.');
+			if (++pingCheckCount > 6) {
+			  clearInterval(pinger);
+			  pinger = null;
+			  connected = false;
+			  if (device) device.close();
+			  device = null;
+			  return;
+			}
+		  } else {
+			if (!device) {
+			  clearInterval(pinger);
+			  pinger = null;
+			  return;
+			}
+			queryFirmware();
+			pinged = true;
+			console.log('Pinged firmware.');
+		  }
+		}, 5000);
+    }, 10000);
   }
 
   function hasCapability(pin, mode) {
