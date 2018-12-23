@@ -892,9 +892,9 @@
   var descriptor = {
     blocks: blocks[lang],
     menus: menus[lang],
-    url: 'http://khanning.github.io/scratch-arduino-extension'
+    url: 'http://samkass.github.io/samkass_arduino_extension.js'
   };
 
-  ScratchExtensions.register('Arduino', descriptor, ext, {type:'serial'});
+  ScratchExtensions.register('ArduinoSam', descriptor, ext, {type:'serial'});
 
 })({});
