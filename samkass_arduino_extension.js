@@ -896,5 +896,6 @@
   };
 
   ScratchExtensions.register('ArduinoSam', descriptor, ext, {type:'serial'});
+  
 
 })({});
