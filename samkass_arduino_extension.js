@@ -251,6 +251,9 @@
       
       if (parsingSysex) {
 //        console.log('Additional sysex data '+inputData[i].toString(16));
+        if (sysexBytesRead == 0) {
+          console.log('Sysex is command '+inputData[i].toString(16));
+        }
         if (inputData[i] == END_SYSEX) {
           parsingSysex = false;
           processSysexMessage();
@@ -288,7 +291,7 @@
             executeMultiByteCommand = command;
             break;
           case START_SYSEX:
-            console.log('Began parsing sysex '+command.toString(16));
+            console.log('Began parsing sysex command.');
             parsingSysex = true;
             sysexBytesRead = 0;
             break;
